@@ -1,4 +1,3 @@
-```markdown
 # 🌍 Countries Explorer - Expo + GraphQL
 
 This is a **basic mobile app** built using **React Native (via Expo)** and **Apollo Client with GraphQL**. It fetches and displays a list of countries with their flags using the public GraphQL API from [countries.trevorblades.com](https://countries.trevorblades.com).
