@@ -1,45 +1,53 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import React from "react";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { gql, useQuery } from "@apollo/client";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+const GET_PLAYERS = gql`
+  query {
+    players {
+      id
+      name
+      age
+      position
+      stats {
+        goals
+        assists
+        matches
+      }
+      team {
+        name
+      }
+    }
+  }
+`;
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function Home() {
+  const { loading, error, data } = useQuery(GET_PLAYERS);
+
+  if (loading) return <Text>Loading...</Text>;
+  if (error) return <Text>Error: {error.message}</Text>;
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+    <ScrollView style={styles.container}>
+      {data.players.map((player) => (
+        <View key={player.id} style={styles.card}>
+          <Text style={styles.name}>{player.name}</Text>
+          <Text>{player.position} | Age: {player.age}</Text>
+          <Text>Team: {player.team.name}</Text>
+          <Text>Stats: {player.stats.goals}G / {player.stats.assists}A</Text>
+        </View>
+      ))}
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { padding: 15 },
+  card: {
+    backgroundColor: "#f0f0f0",
+    padding: 15,
+    marginBottom: 10,
+    borderRadius: 10,
+  },
+  name: { fontSize: 18, fontWeight: "bold" },
+});
