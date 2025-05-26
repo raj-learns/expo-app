@@ -1,50 +1,104 @@
-# Welcome to your Expo app 👋
+```markdown
+# 🌍 Countries Explorer - Expo + GraphQL
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a **basic mobile app** built using **React Native (via Expo)** and **Apollo Client with GraphQL**. It fetches and displays a list of countries with their flags using the public GraphQL API from [countries.trevorblades.com](https://countries.trevorblades.com).
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Features
 
-   ```bash
-   npm install
-   ```
+- Built with **Expo (React Native)**
+- Uses **Apollo Client** for GraphQL queries
+- Fetches real-time data from a **public GraphQL API**
+- Displays:
+  - Country names
+  - Emojis (flags)
+- Clean and responsive UI
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 📦 Technologies Used
 
-In the output, you'll find options to open the app in a
+- React Native (via Expo)
+- TypeScript
+- Apollo Client
+- GraphQL
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📂 Project Structure
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+graphql-demo/
+│
+├── app/
+│   └── graphql.tsx        # Main screen with GraphQL query logic
+│
+├── apollo/
+│   └── client.ts          # Apollo Client setup
+│
+├── graphql/
+│   └── queries.ts         # GraphQL queries stored separately
+│
+├── App.tsx                # Root entry file
+└── package.json           # Project dependencies and scripts
 
-## Learn more
+````
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🛠️ Getting Started
 
-## Join the community
+### 1. Clone the repository
 
-Join our community of developers creating universal apps.
+```bash
+git clone https://github.com/your-username/graphql-demo.git
+cd graphql-demo
+````
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the app
+
+```bash
+npx expo start
+```
+
+* Scan the QR code in your terminal with **Expo Go** app on your phone to view the app.
+
+---
+
+## 🔗 GraphQL API Used
+
+This app uses the free public API:
+
+```
+https://countries.trevorblades.com/
+```
+
+No authentication or setup required.
+
+---
+
+## 🤝 Author
+
+Built by Raj Shrivastav
+Expo + GraphQL Demo App — for learning and showcasing purpose.
+
+---
+
+## 🧠 Want to Learn More?
+
+This app is part of a personal learning journey to understand:
+
+* Expo + React Native fundamentals
+* GraphQL + Apollo Client
+* Clean project structure
+
+```
+
